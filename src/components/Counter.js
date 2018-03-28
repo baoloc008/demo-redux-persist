@@ -4,47 +4,11 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  TextInput
+  TextInput,
+  Switch
 } from 'react-native';
 import { connect } from 'react-redux';
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'white'
-  },
-  text: {
-    color: 'black',
-    fontSize: 40,
-    alignSelf: 'center'
-  },
-  button: {
-    padding: 10,
-    marginVertical: 10,
-    alignSelf: 'center'
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
-    alignSelf: 'center'
-  },
-  textInput: {
-    marginHorizontal: 20,
-    marginVertical: 20
-  },
-  secondText: {
-    color: 'black',
-    fontSize: 15,
-    alignSelf: 'center'
-  },
-  title: {
-    color: 'black',
-    fontSize: 50,
-    alignSelf: 'center'
-  }
-});
-
+import styles from './styles';
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -74,6 +38,15 @@ class Counter extends React.Component {
         <Text style={styles.secondText}>
           Logged in: {this.props.isLoggedIn ? 'true' : 'false'}
         </Text>
+        <View style={styles.switchView}>
+          <Text style={styles.secondText}>Save state:</Text>
+          <Switch
+            style={styles.switch}
+            value={this.props.isSaveState}
+            onValueChange={() => this.props.toggleSwitchSaveState()}
+          />
+        </View>
+
         <Text style={styles.text}>{this.props.number}</Text>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: 'green' }]}
@@ -95,13 +68,15 @@ class Counter extends React.Component {
 const mapStateToProp = state => ({
   name: state.user.name,
   isLoggedIn: state.user.isLoggedIn,
+  isSaveState: state.user.isSaveState,
   number: state.counter.number
 });
 
 const mapDispatchToProp = dispatch => ({
   login: name => dispatch({ type: 'LOGIN', name }),
   increase: () => dispatch({ type: 'INCREMENT' }),
-  decrease: () => dispatch({ type: 'DECREMENT' })
+  decrease: () => dispatch({ type: 'DECREMENT' }),
+  toggleSwitchSaveState: () => dispatch({ type: 'TOGGLE_SAVE_STATE' })
 });
 
 export default connect(mapStateToProp, mapDispatchToProp)(Counter);
