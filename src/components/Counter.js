@@ -8,7 +8,51 @@ import {
   Switch
 } from 'react-native';
 import { connect } from 'react-redux';
-import styles from './styles';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  },
+  text: {
+    color: 'black',
+    fontSize: 40,
+    alignSelf: 'center'
+  },
+  button: {
+    padding: 10,
+    marginVertical: 10,
+    alignSelf: 'center'
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignSelf: 'center'
+  },
+  textInput: {
+    marginHorizontal: 20,
+    marginVertical: 20
+  },
+  secondText: {
+    color: 'black',
+    fontSize: 15,
+    alignSelf: 'center'
+  },
+  title: {
+    color: 'black',
+    fontSize: 50,
+    alignSelf: 'center'
+  },
+  switch: {
+    alignSelf: 'center'
+  },
+  switchView: {
+    flexDirection: 'row',
+    alignSelf: 'center'
+  }
+});
+
 class Counter extends React.Component {
   constructor(props) {
     super(props);
