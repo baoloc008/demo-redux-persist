@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { persistStore, persistReducer, getStoredState } from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import reducer from '../reducers';
